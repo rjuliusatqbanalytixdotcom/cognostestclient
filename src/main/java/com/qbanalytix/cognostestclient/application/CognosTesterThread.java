@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import com.ganesha.context.Context;
 import com.ganesha.core.exception.AppException;
 import com.ganesha.core.exception.UserException;
-import com.ganesha.core.utils.Formatter;
 import com.qbanalytix.cognostestclient.business.dao.DaoCollection;
 import com.qbanalytix.cognostestclient.business.facades.impl.LoadDashboardScenarioFacadeImpl;
 import com.qbanalytix.cognostestclient.business.facades.impl.LoginScenarioFacadeImpl;
@@ -98,17 +97,18 @@ public class CognosTesterThread extends Thread {
 
 		List<String> cognosReportURLs = daoCollection.getGlobalDao().getCognosReportURLs(context);
 
-		int counter = daoCollection.getGlobalDao().getCognosReportTestCounter(context);
-		for (int i = 0; i < counter; ++i) {
+		while (CognosTester.running) {
+			long start = System.currentTimeMillis();
 			for (String cognosReportURL : cognosReportURLs) {
 				context.put("cognosReportURL", cognosReportURL);
 				loadDashboardScenarioFacade.execute(context);
 			}
-			updateStatusOnServer(Formatter.formatNumberToString(i), Formatter.formatNumberToString(counter));
+			long timeConsumed = System.currentTimeMillis() - start;
+			updateStatusOnServer(timeConsumed);
 		}
 	}
 
-	private void updateStatusOnServer(String current, String total) throws UserException {
+	private void updateStatusOnServer(long timeConsumed) throws UserException {
 
 		Thread thread = new InvokeListenerUpdateStatusThread(new IServerInvokerListener() {
 
@@ -130,7 +130,7 @@ public class CognosTesterThread extends Thread {
 				logger.error(response);
 				System.exit(1);
 			}
-		}, current, total);
+		}, timeConsumed);
 
 		thread.start();
 	}
