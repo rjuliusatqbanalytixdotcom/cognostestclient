@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>cognostestclient-1.0.0.20161128.jar</jar>
+  <outfile>D:\Backups\QB Lenovo\rjulius\Workspace\cognostestclient\Install Wizard\package\cognostestclient-1.0.0.20161128.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://www.oracle.com/technetwork/java/javase/downloads/index.html?ssSourceSiteId=otnjp</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>D:\Backups\QB Lenovo\rjulius\Workspace\cognostestclient\cognostest.home\images\QB Icon 128.ico</icon>
+  <singleInstance>
+    <mutexName>cognostestclient</mutexName>
+    <windowTitle></windowTitle>
+  </singleInstance>
+  <jre>
+    <path>jre</path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <opt>-DGANESHA-HOME=cognostest.home</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.20161128</fileVersion>
+    <txtFileVersion>v1.0.0.20161128</txtFileVersion>
+    <fileDescription>This file just for evaluation purpose</fileDescription>
+    <copyright>QB Analytix</copyright>
+    <productVersion>1.0.0.20161128</productVersion>
+    <txtProductVersion>v1.0.0.20161128</txtProductVersion>
+    <productName>cognostestclient</productName>
+    <companyName>QB Analytix</companyName>
+    <internalName>QB Analytix</internalName>
+    <originalFilename>cognostestclient.exe</originalFilename>
+  </versionInfo>
+</launch4jConfig>

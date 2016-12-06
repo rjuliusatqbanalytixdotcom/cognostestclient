@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+		  "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+
+<beans default-autowire="byName">
+
+	<bean id="globalDao"
+		class="com.qbanalytix.cognostestclient.business.dao.impl.GlobalDaoImpl"
+		scope="singleton" />
+
+	<bean id="loginScenarioFacade"
+		class="com.qbanalytix.cognostestclient.business.facades.impl.LoginScenarioFacadeImpl"
+		scope="singleton" />
+
+	<bean id="logoutScenarioFacade"
+		class="com.qbanalytix.cognostestclient.business.facades.impl.LogoutScenarioFacadeImpl"
+		scope="singleton" />
+
+	<bean id="loadDashboardScenarioFacade"
+		class="com.qbanalytix.cognostestclient.business.facades.impl.LoadDashboardScenarioFacadeImpl"
+		scope="singleton" />
+
+	<bean id="daoCollection"
+		class="com.qbanalytix.cognostestclient.business.dao.DaoCollection"
+		scope="singleton" />
+
+</beans>
