@@ -23,6 +23,8 @@ public class CognosTester extends Thread {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+	public static boolean running = false;
+	
 	private DaoCollection daoCollection = (DaoCollection) ApplicationContext.getBean("daoCollection");
 	private Context parentContext;
 
@@ -34,6 +36,7 @@ public class CognosTester extends Thread {
 	public void run() {
 		ThreadContext context = new ThreadContext(parentContext);
 		try {
+			running = true;
 			runTest(context);
 		} catch (UserException e) {
 			throw new AppException(e.getCause());

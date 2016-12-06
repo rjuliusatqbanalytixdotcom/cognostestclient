@@ -11,14 +11,14 @@ import com.qbanalytix.cognostestclient.web.ServiceResponse;
 
 public class InvokeListenerUpdateStatusThread extends AbstractServerInvokerThread {
 
-	private String current;
-	private String total;
+	private long timeConsumed;
+	private long threadId;
 
-	public InvokeListenerUpdateStatusThread(IServerInvokerListener serverInvokerListener, String current,
-			String total) {
+	public InvokeListenerUpdateStatusThread(IServerInvokerListener serverInvokerListener, long timeConsumed,
+			long threadId) {
 		super(serverInvokerListener);
-		this.current = current;
-		this.total = total;
+		this.timeConsumed = timeConsumed;
+		this.threadId = threadId;
 	}
 
 	@Override
@@ -28,10 +28,10 @@ public class InvokeListenerUpdateStatusThread extends AbstractServerInvokerThrea
 		String response = null;
 		try {
 			ServiceParameter params = new ServiceParameter();
-			params.put("current", current);
-			params.put("total", total);
 			params.put("hostname", ClientInformation.INSTANCE.getHostname());
 			params.put("port", String.valueOf(ClientInformation.INSTANCE.getPort()));
+			params.put("threadId", String.valueOf(threadId));
+			params.put("timeConsumed", String.valueOf(timeConsumed));
 			response = httpClient.postAndGetString(composeURL(), params);
 		} catch (Exception e) {
 			getServerInvokerListener().handleException(e);

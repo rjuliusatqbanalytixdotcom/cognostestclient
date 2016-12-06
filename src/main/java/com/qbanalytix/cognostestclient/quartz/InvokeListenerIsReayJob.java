@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ganesha.core.exception.UserException;
+import com.qbanalytix.cognostestclient.application.CognosTester;
 import com.qbanalytix.cognostestclient.serverinvoker.InvokeListenerIsReadyThread;
 import com.qbanalytix.cognostestclient.serverinvoker.base.IServerInvokerListener;
 import com.qbanalytix.cognostestclient.web.ServiceResponse;
@@ -42,13 +43,31 @@ public class InvokeListenerIsReayJob implements Job {
 			@Override
 			public void handleException(Exception e) {
 				logger.error(e.toString(), e);
-				System.exit(1);
+				CognosTester.running = false;
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					/*
+					 * Do nothing
+					 */
+				} finally {
+					System.exit(1);
+				}
 			}
 
 			@Override
 			public void handleException(String response) {
 				logger.error(response);
-				System.exit(1);
+				CognosTester.running = false;
+				try {
+					Thread.sleep(5000);
+				} catch (InterruptedException e1) {
+					/*
+					 * Do nothing
+					 */
+				} finally {
+					System.exit(1);
+				}
 			}
 		}).start();
 	}
