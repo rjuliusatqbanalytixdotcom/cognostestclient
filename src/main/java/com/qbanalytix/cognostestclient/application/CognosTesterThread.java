@@ -109,7 +109,6 @@ public class CognosTesterThread extends Thread {
 	}
 
 	private void updateStatusOnServer(long timeConsumed, long threadId) throws UserException {
-
 		Thread thread = new InvokeListenerUpdateStatusThread(new IServerInvokerListener() {
 
 			@Override
@@ -131,7 +130,6 @@ public class CognosTesterThread extends Thread {
 				System.exit(1);
 			}
 		}, timeConsumed, threadId);
-
 		thread.start();
 	}
 
