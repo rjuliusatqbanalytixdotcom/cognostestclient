@@ -104,11 +104,19 @@ public class CognosTesterThread extends Thread {
 				loadDashboardScenarioFacade.execute(context);
 			}
 			long timeConsumed = System.currentTimeMillis() - start;
+<<<<<<< HEAD
 			updateStatusOnServer(timeConsumed, Thread.currentThread().getId());
+=======
+			updateStatusOnServer(timeConsumed);
+>>>>>>> branch 'master' of https://github.com/rjuliusatqbanalytixdotcom/cognostestclient.git
 		}
 	}
 
+<<<<<<< HEAD
 	private void updateStatusOnServer(long timeConsumed, long threadId) throws UserException {
+=======
+	private void updateStatusOnServer(long timeConsumed) throws UserException {
+>>>>>>> branch 'master' of https://github.com/rjuliusatqbanalytixdotcom/cognostestclient.git
 
 		Thread thread = new InvokeListenerUpdateStatusThread(new IServerInvokerListener() {
 
@@ -130,7 +138,11 @@ public class CognosTesterThread extends Thread {
 				logger.error(response);
 				System.exit(1);
 			}
+<<<<<<< HEAD
 		}, timeConsumed, threadId);
+=======
+		}, timeConsumed);
+>>>>>>> branch 'master' of https://github.com/rjuliusatqbanalytixdotcom/cognostestclient.git
 
 		thread.start();
 	}
